@@ -1,0 +1,23 @@
+{
+  "name": "restaurant-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zderApfel/restaurant-page.git"
+  },
+  "author": "Zachary Zahradka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zderApfel/restaurant-page/issues"
+  },
+  "homepage": "https://github.com/zderApfel/restaurant-page#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
