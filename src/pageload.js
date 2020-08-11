@@ -1,3 +1,5 @@
+const textStorage = require('./text.json');
+
 const loadHomePage = () => {
     const container = document.getElementById('content');
 
@@ -10,19 +12,19 @@ const loadHomePage = () => {
     childrenArray.push(borgers);
 
     const mainTitle = document.createElement('h1');
-    mainTitle.innerHTML = "Zach's Borgers";
+    mainTitle.textContent = "Zach's Borgers";
     childrenArray.push(mainTitle);
 
     const intro = document.createElement('p');
-    intro.innerHTML = "Zach's Borgers is a cutesie-style borger restaurant located in Hell, Michigan. The locals say it is the best (and only) borger place they've ever been to."
+    intro.textContent = textStorage.mainIntro;
     childrenArray.push(intro);
 
     const whatIsBorger = document.createElement('h2');
-    whatIsBorger.innerHTML = "What is a Borger?";
+    whatIsBorger.textContent = "What is a Borger?";
     childrenArray.push(whatIsBorger);
 
     const whatABorgerIs = document.createElement('p');
-    whatABorgerIs.innerHTML = "Zach gets this question a lot, it's asked a lot by many customers, in fact. The fact of the matter is that it's not important what a borger is. They taste good, so why ask? Nobody has ever gotten sick from a borger, and nobody is allergic to them either. It's impossible to say any of those things has happened. So please, just calm down and eat your borger."
+    whatABorgerIs.textContent = textStorage.mainWhatIsBorger;
     childrenArray.push(whatABorgerIs);
 
     appendChildren(container, childrenArray);
