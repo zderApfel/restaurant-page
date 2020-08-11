@@ -5,19 +5,27 @@ const loadBanner = () => {
     let childrenArray = [];
 
     const menuTab = document.createElement('td');
-    menuTab.setAttribute('class', 'tab');
+    menuTab.setAttribute('class', 'not-selected');
     menuTab.textContent = "Menu";
+    menuTab.addEventListener("click", function(){pageChange(menuTab)});
 
     const homeTab = document.createElement('td');
-    homeTab.setAttribute('class', 'tab');
+    homeTab.setAttribute('class', 'not-selected');
     homeTab.textContent = "Home";
+    homeTab.addEventListener("click", function(){pageChange(homeTab)});
 
     const contactTab = document.createElement('td');
-    contactTab.setAttribute('class', 'tab');
+    contactTab.setAttribute('class', 'not-selected');
     contactTab.textContent = "Contact Us!";
+    contactTab.addEventListener("click", function(){pageChange(contactTab)})
 
     childrenArray.push(menuTab, homeTab, contactTab);
     appendChildren(PARENT_BANNER, childrenArray);
+
+    function pageChange(tab){
+        tab.setAttribute('class', 'selected');
+        console.log("Changing to " + tab.textContent);
+    }
 
 }
 
