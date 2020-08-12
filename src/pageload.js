@@ -1,19 +1,6 @@
 const textStorage = require('./text.json');
 
-function appendChildren(parent, array){ //Utility function doing a mass "append children" so I don't have to type it multiple times
-    for (let x in array){
-        parent.appendChild(array[x]);
-    }
-}
-
-const loadBanner = (defaultActive) => {
-    /*
-        Page IDs:
-            * Home Page: 't2';
-            * Menu Page: 't1';
-            * Contact Page: 't3';
-    */
-    
+const loadBanner = () => {   
     const PARENT_BANNER = document.getElementById('tab-container');
     let childrenArray = [];
 
@@ -21,39 +8,50 @@ const loadBanner = (defaultActive) => {
     menuTab.setAttribute('class', 'not-selected');
     menuTab.textContent = "Menu";
     menuTab.id = "t1";
-    menuTab.addEventListener("click", function(){pageChange(menuTab)});
+    menuTab.addEventListener("click", function(){changeTab(menuTab)});
 
     const homeTab = document.createElement('td');
     homeTab.setAttribute('class', 'not-selected');
     homeTab.textContent = "Home";
     homeTab.id = "t2";
-    homeTab.addEventListener("click", function(){pageChange(homeTab)});
+    homeTab.addEventListener("click", function(){changeTab(homeTab)});
 
     const contactTab = document.createElement('td');
     contactTab.setAttribute('class', 'not-selected');
     contactTab.textContent = "Contact Us!";
     contactTab.id = "t3";
-    contactTab.addEventListener("click", function(){selectTab(contactTab)});
+    contactTab.addEventListener("click", function(){changeTab(contactTab)});
 
     childrenArray.push(menuTab, homeTab, contactTab);
 
-    for (let x = 0; x < childrenArray.length; x++){
-        if (childrenArray[x].id == defaultActive){
-            childrenArray[x].setAttribute('class', 'selected');
-        }
-    }
-
     appendChildren(PARENT_BANNER, childrenArray);
 
-    function selectTab(tab){
-        console.log("Changing to " + tab.textContent);
+    function changeTab(tab){
+        switch (tab.id){
+            case "t1":
+                loadMenuPage();
+            case "t2":
+                loadHomePage();
+            case "t3":
+                loadContactPage();
+        }
+        for (let x = 0; x < childrenArray.length; x++){
+            childrenArray[x].setAttribute("class", "not-selected");
+            if (tab == childrenArray[x]){
+                tab.setAttribute("class", "selected");
+            }
+        }
     }
+}
 
+const loadMenuPage = () => {
+    const container = document.getElementById('content');
+    container.innerHTML = "";
 }
 
 const loadHomePage = () => {
-    loadBanner('t2');
     const container = document.getElementById('content');
+    container.innerHTML = "";
     let childrenArray = []
 
     const borgers = document.createElement('img');
@@ -65,16 +63,30 @@ const loadHomePage = () => {
     mainTitle.textContent = "Zach's Borgers";
 
     const intro = document.createElement('p');
-    intro.textContent = textStorage.mainIntro;
+    intro.textContent = textStorage.HOME_PAGE.mainIntro;
 
     const whatIsBorger = document.createElement('h2');
     whatIsBorger.textContent = "What is a Borger?";
 
     const whatABorgerIs = document.createElement('p');
-    whatABorgerIs.textContent = textStorage.mainWhatIsBorger;
+    whatABorgerIs.textContent = textStorage.HOME_PAGE.mainWhatIsBorger;
 
     childrenArray.push(borgers, mainTitle, intro, whatIsBorger, whatABorgerIs);
     appendChildren(container, childrenArray);
 }
+
+const loadContactPage = () => {
+    const container = document.getElementById('content');
+    container.innerHTML = "";
+
+}
+
+function appendChildren(parent, children){
+    for (let x = 0; x < children.length; x++){
+        parent.appendChild(children[x]);
+    }
+}
+
+loadBanner();
 
 export { loadHomePage };

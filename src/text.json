@@ -1,4 +1,6 @@
 {
-    "mainIntro": "Zach's Borgers is a cutesie-style borger restaurant located in Hell, Michigan. The locals say it is the best (and only) borger place they've ever been to.",
-    "mainWhatIsBorger": "Zach gets this question a lot, it's asked a lot by many customers, in fact. The fact of the matter is that it's not important what a borger is. They taste good, so why ask? Nobody has ever gotten sick from a borger, and nobody is allergic to them either. It's impossible to say any of those things has happened. So please, just calm down and eat your borger."
+    "HOME_PAGE": {
+        "mainIntro": "Zach's Borgers is a cutesie-style borger restaurant located in Hell, Michigan. The locals say it is the best (and only) borger place they've ever been to.",
+        "mainWhatIsBorger": "Zach gets this question a lot, it's asked a lot by many customers, in fact. The fact of the matter is that it's not important what a borger is. They taste good, so why ask? Nobody has ever gotten sick from a borger, and nobody is allergic to them either. It's impossible to say any of those things has happened. So please, just calm down and eat your borger."
+    }
 }
