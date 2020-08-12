@@ -25,12 +25,12 @@ const loadBanner = () => {
     childrenArray.push(menuTab, homeTab, contactTab);
 
     appendChildren(PARENT_BANNER, childrenArray);
-    loadHome(homeTab);
+    changeTab(homeTab);
 
     function changeTab(tab){
+        console.log(tab.id);
         let container = document.getElementById("content");
         while (container.firstChild){
-            console.log(tab.textContent);
             container.removeChild(container.firstChild);
         }
         for (let x = 0; x < childrenArray.length; x++){
@@ -38,21 +38,28 @@ const loadBanner = () => {
         }
         switch (tab.id){
             case "t1":
+                tab.setAttribute('class', 'selected');
                 loadMenu(tab);
+                break;
             case "t2":
+                tab.setAttribute('class', 'selected');
                 loadHome(tab);
+                break;
             case "t3":
+                tab.setAttribute('class', 'selected');
                 loadContact(tab);
+                break;
         }
     }
 }
+
+//Page Load Methods
 
 const loadMenu = (tab) => {
     const container = document.getElementById('content');
 }
 
 const loadHome = (tab) => {
-    tab.setAttribute('class', 'selected')
     const container = document.getElementById('content');
     let childrenArray = []
 
@@ -81,7 +88,7 @@ const loadContact = (tab) => {
     const container = document.getElementById('content');
 }
 
-function appendChildren(parent, children){
+function appendChildren(parent, children){ //Utility to append multiple children
     for (let x = 0; x < children.length; x++){
         parent.appendChild(children[x]);
     }
