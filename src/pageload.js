@@ -25,33 +25,35 @@ const loadBanner = () => {
     childrenArray.push(menuTab, homeTab, contactTab);
 
     appendChildren(PARENT_BANNER, childrenArray);
+    loadHome(homeTab);
 
     function changeTab(tab){
-        switch (tab.id){
-            case "t1":
-                loadMenuPage();
-            case "t2":
-                loadHomePage();
-            case "t3":
-                loadContactPage();
+        let container = document.getElementById("content");
+        while (container.firstChild){
+            console.log(tab.textContent);
+            container.removeChild(container.firstChild);
         }
         for (let x = 0; x < childrenArray.length; x++){
             childrenArray[x].setAttribute("class", "not-selected");
-            if (tab == childrenArray[x]){
-                tab.setAttribute("class", "selected");
-            }
+        }
+        switch (tab.id){
+            case "t1":
+                loadMenu(tab);
+            case "t2":
+                loadHome(tab);
+            case "t3":
+                loadContact(tab);
         }
     }
 }
 
-const loadMenuPage = () => {
+const loadMenu = (tab) => {
     const container = document.getElementById('content');
-    container.innerHTML = "";
 }
 
-const loadHomePage = () => {
+const loadHome = (tab) => {
+    tab.setAttribute('class', 'selected')
     const container = document.getElementById('content');
-    container.innerHTML = "";
     let childrenArray = []
 
     const borgers = document.createElement('img');
@@ -75,10 +77,8 @@ const loadHomePage = () => {
     appendChildren(container, childrenArray);
 }
 
-const loadContactPage = () => {
+const loadContact = (tab) => {
     const container = document.getElementById('content');
-    container.innerHTML = "";
-
 }
 
 function appendChildren(parent, children){
@@ -87,6 +87,4 @@ function appendChildren(parent, children){
     }
 }
 
-loadBanner();
-
-export { loadHomePage };
+export { loadBanner };

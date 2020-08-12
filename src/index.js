@@ -1,3 +1,3 @@
-import { loadHomePage } from "./pageload.js";
+import { loadBanner } from "./pageload.js";
 
-loadHomePage();
+loadBanner();
