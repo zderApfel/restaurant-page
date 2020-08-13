@@ -8,9 +8,12 @@ h1, h2, h3{
     text-align: center;
 }
 
+
+
 p{
     margin: 25px 5% 25px 5%;
     text-align: justify;
+    padding-bottom: 25px;
 }
 
 header{
@@ -72,6 +75,14 @@ header{
     margin: auto;
     height: 50px;
     width: 150px;
+}
+
+#menu-list{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    list-style-type: none;
+    padding-bottom: 25px;
 }
 
 #menu-link{

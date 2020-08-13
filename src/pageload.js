@@ -39,15 +39,15 @@ const loadBanner = () => {
         switch (tab.id){
             case "t1":
                 tab.setAttribute('class', 'selected');
-                loadMenu(tab);
+                loadMenu();
                 break;
             case "t2":
                 tab.setAttribute('class', 'selected');
-                loadHome(tab);
+                loadHome();
                 break;
             case "t3":
                 tab.setAttribute('class', 'selected');
-                loadContact(tab);
+                loadContact();
                 break;
         }
     }
@@ -55,13 +55,34 @@ const loadBanner = () => {
 
 //Page Load Methods
 
-const loadMenu = (tab) => {
+const loadMenu = () => {
     const container = document.getElementById('content');
+    let childrenArray = [];
+
+    const borgers = document.createElement('img');
+    borgers.setAttribute('src', 'burger.jpeg');
+    borgers.setAttribute('alt', 'Juicy borgers!');
+    borgers.id = 'borger-pic';
+
+    const mainTitle = document.createElement('h1');
+    mainTitle.textContent = "Menu";
+
+    const menuList = document.createElement('ul');
+    menuList.id = "menu-list";
+    for (let x in textStorage.MENU_PAGE.menu){
+        let y = document.createElement('li');
+        y.textContent = `${textStorage.MENU_PAGE.menu[x].name} -- $${textStorage.MENU_PAGE.menu[x].price}`;
+        menuList.appendChild(y);
+    }
+
+    childrenArray.push(borgers, mainTitle, menuList);
+    appendChildren(container, childrenArray);
+    
 }
 
-const loadHome = (tab) => {
+const loadHome = () => {
     const container = document.getElementById('content');
-    let childrenArray = []
+    let childrenArray = [];
 
     const borgers = document.createElement('img');
     borgers.setAttribute('src', 'burger.jpeg');
@@ -84,8 +105,23 @@ const loadHome = (tab) => {
     appendChildren(container, childrenArray);
 }
 
-const loadContact = (tab) => {
+const loadContact = () => {
     const container = document.getElementById('content');
+    let childrenArray = [];
+
+    const borgers = document.createElement('img');
+    borgers.setAttribute('src', 'burger.jpeg');
+    borgers.setAttribute('alt', 'Juicy borgers!');
+    borgers.id = 'borger-pic';
+
+    const mainTitle = document.createElement('h1');
+    mainTitle.textContent = "Contact Us!";
+
+    const mainContent = document.createElement('p');
+    mainContent.textContent = textStorage.CONTACT_PAGE.main;
+
+    childrenArray.push(borgers, mainTitle, mainContent);
+    appendChildren(container, childrenArray);
 }
 
 function appendChildren(parent, children){ //Utility to append multiple children
